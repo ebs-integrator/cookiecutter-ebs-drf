@@ -1,4 +1,3 @@
-{% raw %}
 from apps.common.mixins import EBSModelViewSet
 from apps.{{model_name_plural_lower}}.models import {{model_name}}
 from apps.{{model_name_plural_lower}}.serializers import {{model_name}}Serializer
@@ -7,4 +6,3 @@ from apps.{{model_name_plural_lower}}.serializers import {{model_name}}Serialize
 class {{model_name}}ViewSet(EBSModelViewSet):
     queryset = {{model_name}}.objects.all()
     serializer_class = {{model_name}}Serializer
-{% endraw %}
