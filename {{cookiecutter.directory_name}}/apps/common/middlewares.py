@@ -11,9 +11,6 @@ from raven.contrib.django.raven_compat.models import client
 
 
 class ApiMiddleware(MiddlewareMixin):
-    @staticmethod
-    def process_request(request):
-        request.LANGUAGE_CODE = translation.get_language()
 
     @staticmethod
     def process_exception(request, response):
