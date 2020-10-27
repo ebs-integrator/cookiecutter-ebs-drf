@@ -26,10 +26,13 @@ env = environ.Env(
     SQL_PORT=(int, 5432),
     SQL_HOST=(str, 'localhost'),
 {%- if cookiecutter.celery == "Yes" -%}
-CELERY_BROKER_URL=env(str,)
+CELERY_BROKER_URL=env(str,),
 {%- elif cookiecutter.celery == "No" -%}
 {% endif %}
-    SQL_PASSWORD=(str,)
+    SQL_PASSWORD=(str,),
+SSO_DOMAIN=(str,),
+SSO_SERVICE_TOKEN=(str,),
+AUTH_SECRET_KEY=(str,)
 )
 # reading .env file
 environ.Env.read_env()
