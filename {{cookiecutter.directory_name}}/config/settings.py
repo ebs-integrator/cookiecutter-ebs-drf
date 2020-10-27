@@ -26,7 +26,9 @@ env = environ.Env(
     SQL_PORT=(int, 5432),
     SQL_HOST=(str, 'localhost'),
 {%- if cookiecutter.celery == "Yes" -%}
-CELERY_BROKER_URL=env(str,),
+
+CELERY_BROKER_URL=(str,),
+
 {%- elif cookiecutter.celery == "No" -%}
 {% endif %}
     SQL_PASSWORD=(str,),
@@ -203,15 +205,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-AUTH_USER_MODEL = 'users.User'
 
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-SSO_DOMAIN = env('https://auth.api.dev.ebs.io/')
-SSO_SERVICE_TOKEN = env("e5a87802f34e4335b64c1844e190bc73")
-AUTH_SECRET_KEY = env(")%1nllc!l^6lnwjgmA7tfn9@%9axr_^=^h%krzs&keih+!j+#z")
+SSO_DOMAIN = env('SSO_DOMAIN')
+SSO_SERVICE_TOKEN = env("SSO_SERVICE_TOKEN")
+AUTH_SECRET_KEY = env("AUTH_SECRET_KEY")
 {%- if cookiecutter.celery == "Yes" -%}
+
 CELERY_BROKER_URL = env('CELERY_BROKER_URL')
 {%- elif cookiecutter.celery == "No" -%}
 {% endif %}
