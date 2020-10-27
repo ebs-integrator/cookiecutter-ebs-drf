@@ -1,0 +1,7 @@
+from django.db import models
+
+from apps.common.models import BaseModel
+
+
+class {{model_name}}(BaseModel):
+{{fields_for_model}}

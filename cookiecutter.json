@@ -1,0 +1,4 @@
+{
+    "directory_name": "boilerplate",
+    "celery": ["Yes", "No"]
+}
