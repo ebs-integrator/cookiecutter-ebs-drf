@@ -2,6 +2,6 @@
     "directory_name": "boilerplate",
     "celery": ["Yes", "No"],
     "_copy_without_render": [
-        "{{cookiecutter.directory_name}}/apps/common/management/commands/*",
+        "{{cookiecutter.directory_name}}/apps/common/management/commands/*"
     ]
 }
