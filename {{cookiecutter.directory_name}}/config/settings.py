@@ -25,16 +25,13 @@ env = environ.Env(
     SQL_USER=(str,),
     SQL_PORT=(int, 5432),
     SQL_HOST=(str, 'localhost'),
+    SQL_PASSWORD=(str,),
 {%- if cookiecutter.celery == "Yes" -%}
 
 CELERY_BROKER_URL=(str,),
 
 {%- elif cookiecutter.celery == "No" -%}
 {% endif %}
-    SQL_PASSWORD=(str,),
-SSO_DOMAIN=(str,),
-SSO_SERVICE_TOKEN=(str,),
-AUTH_SECRET_KEY=(str,)
 )
 # reading .env file
 environ.Env.read_env()
@@ -91,7 +88,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    # 'apps.common.middlewares.ApiMiddleware',
+    'apps.common.middlewares.ApiMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -145,7 +142,7 @@ REST_FRAMEWORK = {
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
-        'Token': {
+        'Bearer': {
             'type': 'apiKey',
             'name': 'Authorization',
             'in': 'header'
@@ -188,7 +185,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Europe/Chisinau'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -209,11 +206,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-SSO_DOMAIN = env('SSO_DOMAIN')
-SSO_SERVICE_TOKEN = env("SSO_SERVICE_TOKEN")
-AUTH_SECRET_KEY = env("AUTH_SECRET_KEY")
 {%- if cookiecutter.celery == "Yes" -%}
-
 CELERY_BROKER_URL = env('CELERY_BROKER_URL')
 {%- elif cookiecutter.celery == "No" -%}
 {% endif %}
