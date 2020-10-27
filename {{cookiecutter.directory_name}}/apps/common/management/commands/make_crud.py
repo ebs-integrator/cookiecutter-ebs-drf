@@ -1,3 +1,4 @@
+{% endraw %}
 import os
 
 from django.core.management import BaseCommand
@@ -67,3 +68,4 @@ class Command(BaseCommand):
         open(model_directory + '/tests.py', 'a').close()
         self.stdout.write(self.style.SUCCESS('tests was successfully created'))
         open(model_directory + '/__init__.py', 'a').close()
+{% endraw %}
