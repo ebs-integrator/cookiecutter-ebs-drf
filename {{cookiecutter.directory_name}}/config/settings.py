@@ -207,6 +207,7 @@ USE_X_FORWARDED_HOST = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 {%- if cookiecutter.celery == "Yes" -%}
+
 CELERY_BROKER_URL = env('CELERY_BROKER_URL')
 {%- elif cookiecutter.celery == "No" -%}
 {% endif %}
